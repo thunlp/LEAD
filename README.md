@@ -24,13 +24,13 @@ Existing works mainly focus on case-to-case retrieval using lengthy queries, whi
 
 To address these issues, we introduce an automated method to construct synthetic query-candidate pairs and build the largest LCR dataset to date, LEAD, which is hundreds of times larger than existing datasets. 
 
-![image-20240929195152260](C:\Users\86188\AppData\Roaming\Typora\typora-user-images\image-20240929195152260.png)
+![image-20240929195152260](figures/framework.jpg)
 
 Specifically, given a case candidate, we employ a large-scale generative language model to first extract key facts, and omit entities, including names and places.
 Then, based on the anonymous key fact, we require the model to generate a brief and coherent description of the case, which is regarded as the search query. In this way, the generated query is short and contains only a few sentences.
 Additionally, to improve data diversity and enable the model to retrieve relevant cases even when key facts are not entirely consistent, we employ a knowledge-driven data augmentation strategy. For each query, we select the case that is most similar from the perspective of charges, related legal articles, and prison term, from the entire corpus as the augmented positive candidate.
 
-![image-20240929195605719](C:\Users\86188\AppData\Roaming\Typora\typora-user-images\image-20240929195605719.png)
+![image-20240929195605719](figures/results.jpg)
 
 Our model outperforms all baselines on LeCaRD and CAIL2022 by a large margin, achieving state-of-the-art performance. It indicates that using larger-scale and more comprehensive LCR data can greatly benefit task performance, which emphasizes the importance of developing data augmentation methods for LCR.
 
