@@ -1,0 +1,72 @@
+# @package _group_
+
+nq_train:
+  _target_: dpr.data.biencoder_data.JsonQADataset
+  file: data.retriever.nq-train
+
+nq_train_hn1:
+  _target_: dpr.data.biencoder_data.JsonQADataset
+  file: data.retriever.nq-adv-hn-train
+
+nq_dev:
+  _target_: dpr.data.biencoder_data.JsonQADataset
+  file: data.retriever.nq-dev
+
+trivia_train:
+  _target_: dpr.data.biencoder_data.JsonQADataset
+  file: data.retriever.trivia-train
+
+trivia_dev:
+  _target_: dpr.data.biencoder_data.JsonQADataset
+  file: data.retriever.trivia-dev
+
+squad1_train:
+  _target_: dpr.data.biencoder_data.JsonQADataset
+  file: data.retriever.squad1-train
+
+squad1_dev:
+  _target_: dpr.data.biencoder_data.JsonQADataset
+  file: data.retriever.squad1-dev
+
+webq_train:
+  _target_: dpr.data.biencoder_data.JsonQADataset
+  file: data.retriever.webq-train
+
+webq_dev:
+  _target_: dpr.data.biencoder_data.JsonQADataset
+  file: data.retriever.webq-dev
+
+curatedtrec_train:
+  _target_: dpr.data.biencoder_data.JsonQADataset
+  file: data.retriever.curatedtrec-train
+
+curatedtrec_dev:
+  _target_: dpr.data.biencoder_data.JsonQADataset
+  file: data.retriever.curatedtrec-dev
+
+T2Ranking_train:
+  _target_: dpr.data.biencoder_data.Jsonlist_normal_QADataset
+  file: /liuzyai04/thunlp/gaocheng/T2ranking/data/train.json
+
+T2Ranking_dev:
+  _target_: dpr.data.biencoder_data.T2RankingDataset
+  query_file:
+  neg_file:
+  collection:
+  qrel_file:
+
+Dureader_train:
+  _target_: dpr.data.biencoder_data.TsvQADataset
+  file:
+
+Dureader_dev:
+  _target_: dpr.data.biencoder_data.TsvQADataset
+  file:
+
+Law_data_train: 
+  _target_: dpr.data.biencoder_data.LCRDataset
+  file:
+
+Law_data_dev: 
+  _target_: dpr.data.biencoder_data.LCRDataset
+  file:

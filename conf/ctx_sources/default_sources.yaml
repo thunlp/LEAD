@@ -1,0 +1,18 @@
+# @package _group_
+
+dpr_wiki:
+  _target_: dpr.data.retriever_data.CsvCtxSrc
+  file: data.wikipedia_split.psgs_w100
+  id_prefix: 'wiki:'
+
+lecard_short:
+  _target_: dpr.data.retriever_data.JsonLawCtxSrc
+  query_ridx_path:
+  title_key: "ajName"
+  fact_key: 'ajjbqk'
+  id_prefix: 'lecard:'
+
+CAIL2019-SCM:
+    _target_: dpr.data.retriever_data.CAIL2019SCMCtxSrc
+    file: /liuzyai04/thunlp/gaocheng/CAIL2019/scm/test_valid.json
+    id_prefix: 'C19SCM:'
