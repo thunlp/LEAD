@@ -12,7 +12,7 @@
 
 This repo is based on the following paper:
 
-Cheng Gao\*, Chaojun Xiao\*, Zhenghao Liu, Huimin Chen, Zhiyuan Liu, Maosong Sun. Enhancing Legal Case Retrieval via Scaling High-quality Synthetic Query-Candidate Pairs. Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing (EMNLP).
+Cheng Gao\*, Chaojun Xiao\*, Zhenghao Liu, Huimin Chen, Zhiyuan Liu, Maosong Sun. [Enhancing Legal Case Retrieval via Scaling High-quality Synthetic Query-Candidate Pairs](https://arxiv.org/abs/2410.06581). Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing (EMNLP).
 
 ## Features
 1. The largest high-quality, asymmetric legal case retrieval (LCR) datasets to date, containing 100,060 pairs of similar cases.
@@ -36,7 +36,7 @@ Our model outperforms all baselines on LeCaRD and CAIL2022 by a large margin, ac
 
 ## Dataset
 
-You can find the LEAD dataset [here](https://huggingface.co/datasets/JamesChengGao/LEAD). 0, 30, 65, and 100 in the file names represent the proportion of query-key pairs that belong to the same case. Please refer to the ablation section of our paper for more details.
+You can find the LEAD dataset [here](https://huggingface.co/datasets/JamesChengGao/LEAD). 0, 30, 65, and 100 in the file names represent the proportion of query-key pairs that belong to the same case. Please refer to the ablation section of [our paper](https://arxiv.org/abs/2410.06581) for more details.
 
 The simplified version of LeCaRD queries is in `LeCaRD/data/query/query_simplify.json` and the simplified version of CAIL2022 queries is in `CAIL2022/stage2/query_stage2_valid_onlystage2_40_simplified.json`. In both files, “q” represents the original queries of the datasets, while “q_short” represents the simplified queries.
 
@@ -128,7 +128,7 @@ sh train_encoder_LCR.sh
 Note:
 
 - This only supports training data that is formatted exactly the same as previously described. If you wish to use your own formatted training data, please refer to `dpr/data/biencoder_data.py > LCRDataset` to implement your own data processing function. Then, register this class in `conf/datasets/encoder_train_default.yaml`. Finally, change `train_datasets=[Law_data_train]` and `dev_datasets=[Law_data_dev]` in `train_encoder_LCR.sh` to the names you have registered.
-- We have implemented false negative masking strategy (see our paper for details). If you do not wish to use this strategy, please refer to the comments in `train_encoder_LCR.sh` to disable it.
+- We have implemented false negative masking strategy (see our [paper](https://arxiv.org/abs/2410.06581) for details). If you do not wish to use this strategy, please refer to the comments in `train_encoder_LCR.sh` to disable it.
 - The default model file is `dpr/models/hf_models.py`, which implements the Longformer model architecture. The implementation of DPR’s original BERT model architecture can be found in `dpr/models/hf_models_bert.py`.
 
 ## Evaluation
@@ -171,7 +171,7 @@ Notes:
 - For details on LeCaRD and CAIL2022, please see [LeCaRD](https://github.com/myx666/LeCaRD). The implementation in `LeCaRD/metrics.py` is derived from this repository. However, we have introduced two evaluation standards: easy and hard. The easy standard evaluates only on the 30 manually annotated cases for each query, while the hard standard treats the remaining 70 unannotated cases as non-relevant and evaluates across all 100 cases.
 - During evaluation, we implemented a document segmentation strategy, where documents exceeding the sequence length are split into several document blocks. The score of the most similar document block is then used as the score for the entire document. Please refer to `dpr/models/hf_models.py > BertTensorizer` and `dpr/indexer/faiss_indexers.py > DenseFlatIndexer` for this part.
 - Since each query case in LeCaRD and CAIL2022 has its own candidate pool, which is inconsistent with DPR’s implementation, we adopted a more naive approach during evaluation. This involves calling `generate_dense_embeddings.py` and `dense_retriever.py` once for each query case in the sh script. Apparently this method is not efficient for evaluation. If you wish to improve the efficiency of the evaluation, you can implement the related functionality in the code.
-- We also provide the checkpoint of our [best-trained model](https://huggingface.co/datasets/JamesChengGao/LEAD), encoded files (`encoded/encoded_ctx_2048_xs30original_fp16_train_globalmask_1e-5_70epochs`), and evaluation results (`result/result_LeCard/results_2048_xs30original_fp16_train_globalmask_1e-5_70epochs.zip` and `DPR_rank/DPR_rank_LeCard/DPR_rank_2048_xs30original_fp16_train_globalmask_1e-5_70epochs.json`).
+- We also provide the checkpoint of our [best-trained model](https://huggingface.co/JamesChengGao/LEAD-model), encoded files (`encoded/encoded_ctx_2048_xs30original_fp16_train_globalmask_1e-5_70epochs`), and evaluation results (`result/result_LeCard/results_2048_xs30original_fp16_train_globalmask_1e-5_70epochs.zip` and `DPR_rank/DPR_rank_LeCard/DPR_rank_2048_xs30original_fp16_train_globalmask_1e-5_70epochs.json`).
 
 ## License
 
@@ -182,6 +182,11 @@ LEAD is MIT licensed as of now.
 If you find this work useful, please cite the following paper:
 
 ```
-
+@article{cheng2024LEAD,
+  title={Enhancing Legal Case Retrieval via Scaling High-quality Synthetic Query-Candidate Pairs},
+  author={Cheng Gao, Chaojun Xiao, Zhenghao Liu, Huimin Chen, Zhiyuan Liu, Maosong Sun},
+  journal={arXiv preprint arXiv:2410.06581},
+  year={2024}
+}
 ```
 
