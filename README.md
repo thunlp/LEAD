@@ -94,7 +94,7 @@ We search for a similar case for each case based on the Main legal articles, anc
 
 ## Install
 
-The training code framework is derived from [DPR](https://github.com/facebookresearch/dpr). For environment requirements, please follow:
+**The training code framework is derived from [DPR](https://github.com/facebookresearch/dpr).** For environment requirements, please follow:
 
 ```bash
 git clone git@github.com:facebookresearch/DPR.git
@@ -102,19 +102,11 @@ cd DPR
 pip install .
 ```
 
-Then unzip CAIL2022 candidate files:
+Then clone our repo:
 
 ```sh
-cd CAIL2022/stage2
-unzip candidates_stage2_valid.zip
-```
-
-For LeCaRD candidates files, you need to first download 2 compressed files of candidates files [here](LeCaRD/data/candidates/similar_case), and add it to `LeCaRD/data/candidates/similar_case`, then:
-
-```sh
-cd LeCaRD/data/candidates/similar_case
-unzip candidates1.zip
-unzip candidates2.zip
+git clone git@github.com:thunlp/LEAD.git
+cd LEAD
 ```
 
 ## Training
@@ -132,6 +124,21 @@ Note:
 - The default model file is `dpr/models/hf_models.py`, which implements the Longformer model architecture. The implementation of DPR’s original BERT model architecture can be found in `dpr/models/hf_models_bert.py`.
 
 ## Evaluation
+
+To test on CAIL2022, Please first unzip CAIL2022 candidate files:
+
+```sh
+cd CAIL2022/stage2
+unzip candidates_stage2_valid.zip
+```
+
+For LeCaRD candidates files, you need to first download 2 compressed files of candidates files [here](https://github.com/myx666/LeCaRD/tree/main/data/candidates), and add it to `LeCaRD/data/candidates/similar_case`, then:
+
+```sh
+cd LeCaRD/data/candidates/similar_case
+unzip candidates1.zip
+unzip candidates2.zip
+```
 
 In order to start evaluation, please first change the path in `generate_dense_embeddings.sh` and `dense_retriever.sh`, then:
 
