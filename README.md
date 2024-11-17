@@ -189,11 +189,24 @@ LEAD is MIT licensed as of now.
 If you find this work useful, please cite the following paper:
 
 ```
-@article{cheng2024LEAD,
-  title={Enhancing Legal Case Retrieval via Scaling High-quality Synthetic Query-Candidate Pairs},
-  author={Cheng Gao, Chaojun Xiao, Zhenghao Liu, Huimin Chen, Zhiyuan Liu, Maosong Sun},
-  journal={arXiv preprint arXiv:2410.06581},
-  year={2024}
+@inproceedings{gao-etal-2024-enhancing-legal,
+    title = "Enhancing Legal Case Retrieval via Scaling High-quality Synthetic Query-Candidate Pairs",
+    author = "Gao, Cheng  and
+      Xiao, Chaojun  and
+      Liu, Zhenghao  and
+      Chen, Huimin  and
+      Liu, Zhiyuan  and
+      Sun, Maosong",
+    editor = "Al-Onaizan, Yaser  and
+      Bansal, Mohit  and
+      Chen, Yun-Nung",
+    booktitle = "Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing",
+    month = nov,
+    year = "2024",
+    address = "Miami, Florida, USA",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2024.emnlp-main.402",
+    pages = "7086--7100",
 }
 ```
 
